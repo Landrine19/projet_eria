@@ -35,8 +35,7 @@ Route::group(['prefix' => 'admin'],function(){
 });
 
 Route::get('/test', function(Request $request){
-    $controller = new EvenementsController();
-    dd($controller->create($request));
+    
 });
 
 Route::post('/fichiers/store', [FichierController::class, 'store'])->name('fichiers.store');
@@ -46,4 +45,4 @@ Route::post('justification', [EvenementsController::class, 'justifier'])->name('
 Route::get('/present/{membre_id}/{evenement_id}', [EvenementsController::class, 'present']);
 
 Route::get('/evenements/reunions', [EvenementsController::class, 'aff_reunions'])->name('agenda.reunions');
-Route::get('//evenements/reunions/{id}', [EvenementsController::class, 'browseReunion'])->name('site.reunions.browse');
+Route::get('/evenements/reunions/{id}', [EvenementsController::class, 'browseReunion'])->name('site.reunions.browse');

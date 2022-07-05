@@ -58,7 +58,7 @@ class EvenementsController extends BaseController
 
         $data = ["result" => true, "data" => new Collection()];
         $message = "Participant enregistré avec succès";
-        
+
         return response()->json(["success" => $data["result"], "message" => $message, "response_data" => $data['data']], 201);
     }
 
@@ -146,4 +146,3 @@ class EvenementsController extends BaseController
         return $infos;
     }
 }
-

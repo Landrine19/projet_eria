@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 namespace App\Http\Managers\Objects;
@@ -49,7 +49,7 @@ class UsersManager extends TreatmentManager
             $member = Membre::find($req->hidden_id);
             $member->update($req->all());
             $model = $member;
-        else: 
+        else:
             $data = $req->all();
             $data['user_id'] = FacadesAuth::user()->id;
             $model = Membre::create($data);
@@ -75,7 +75,7 @@ class UsersManager extends TreatmentManager
         $data['password'] = $data['password'] ? Hash::make($data['password']) : $member->password;
         $member->update();
         $model = $member;
-        
+
         $data = $model;
         $data->message = "Profile mis à jour avec succès";
         session()->put('message',$data->message);
@@ -87,13 +87,13 @@ class UsersManager extends TreatmentManager
     {
 
         $member = Membre::whereUserId(Auth::user()->id)->first();
-        
+
         $data = new Collection;
         
         $data->nbr_rec = $member->evenements->count();
-        $data->nbr_pubs = $member ? $member->publications->count() : 0;    
-        $data->nbr_prj = $member ? $member->projets->count() : 0;    
-        $data->nbr_offs = $member ? $member->offres->count() : 0;    
+        $data->nbr_pubs = $member ? $member->publications->count() : 0;
+        $data->nbr_prj = $member ? $member->projets->count() : 0;
+        $data->nbr_offs = $member ? $member->offres->count() : 0;
 
         return $data;
     }
@@ -107,10 +107,10 @@ class UsersManager extends TreatmentManager
             if($donnees['hidden_id']) :
                 $po = MembrePoste::whereMembreIdAndPosteId(Auth::user()->membre->id,$donnees['hidden_id'])->first();
                 $po->update($donnees);
-            else : 
-                $donnees['membre_id'] = Auth::user()->membre->id;        
+            else :
+                $donnees['membre_id'] = Auth::user()->membre->id;
                 MembrePoste::create($donnees);
-            endif;    
+            endif;
         }
         $data = new Collection;
         return ["result" => true,"data" => $data];
@@ -125,7 +125,7 @@ class UsersManager extends TreatmentManager
     public function deletePoste($donnees)
     {
         $po = MembrePoste::where(Auth::user()->id,$donnees['hidden_id'])->first();
-        $po->delete(); 
+        $po->delete();
         return ["result" => true,"data" => $donnees];
     }
 
@@ -137,7 +137,7 @@ class UsersManager extends TreatmentManager
                             $po  = MembrePoste::whereMembreIdAndPosteId($model->membre->id,$poste->id)->first();
                             $poste->debut = $po->debut;
                             $poste->fin = $po->fin;
-                            $poste->identity = $po->id; 
+                            $poste->identity = $po->id;
                             return $poste;
                         });
         $model->membre->postes = $col;
