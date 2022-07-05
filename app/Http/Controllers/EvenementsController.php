@@ -131,7 +131,9 @@ class EvenementsController extends BaseController
 
     public function browseReunion($id)
     {
-        $reunion = Evenement::find($id);
+        $reunion = Evenement::with('compterendus.rubriques', 'fichiers')
+                            ->where('id', $id)
+                            ->first();
 
         return view('site.reunions.browse', ['reunion' => $reunion, 'infos' => $this->getInfo()]);
     }

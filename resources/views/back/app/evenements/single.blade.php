@@ -5,7 +5,7 @@ foreach ($reunion->membres as $m1):
         $data->membres->forget($m1->id);
     endif;
 endforeach;
-$user = auth()->user();
+$user = auth()->user()->membre;
 $currentMembre = App\Models\EvenementMembre::where('membre_id', $user->id)
     ->where('evenement_id', $reunion->id)
     ->first();
