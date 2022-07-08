@@ -1,0 +1,1 @@
+<div id="justificatif-container" style="display: none;"></div><?php /**PATH /home/tuoadama/Desktop/Projects/web/laravel/landi_erai/resources/views/back/app/evenements/justificatif-container.blade.php ENDPATH**/ ?>
