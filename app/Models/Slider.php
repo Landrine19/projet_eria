@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Slider extends Model
 {
     use HasFactory;
+
+    public function getCreatedAtAttribute($vale)
+    {
+        return \Carbon\Carbon::parse($vale)->locale('fr')->isoFormat('lll');
+    }
 }
