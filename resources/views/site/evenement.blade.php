@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="{{asset('assets/site/css/events.css')}}">
 @endsection
 
+@php
+    $data = App\Models\Evenement::paginate(10);
+@endphp
+
 @section('view-content')
 <div class="site-section">
     @if($data->count() > 0)
@@ -52,6 +56,7 @@
             </div>
             @endforeach
         </div>
+        {{$data->links()}}
     </div>
     @else 
     <div class="d-flex justify-content-center text-center">

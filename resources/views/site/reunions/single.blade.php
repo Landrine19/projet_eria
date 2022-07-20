@@ -20,7 +20,10 @@
                                                     class="text-primary">{{ $reunion->lieu }}</span>
                                             </h6>
                                             <span>Date : <span
-                                                    class="text-danger">{{ $reunion->date_evenement }}</span></span>
+                                                @php
+                                                    $ddd = Carbon\Carbon::parse($reunion->date_evenement)->locale('fr')->isoFormat('lll');
+                                                @endphp
+                                                    class="text-danger">{{ $ddd }}</span></span>
                                             <h3 class="heading pt-3" style="font-size: 24px;">{{ ucfirst($reunion->intitule) }}
                                             </h3>
                                         </div>

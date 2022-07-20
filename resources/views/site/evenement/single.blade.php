@@ -20,7 +20,7 @@
 
                         <p class="mb-5">
                             <strong class="text-black d-block">Date:</strong> 
-                            {{$data->date_evenement}}
+                            {{$data->date_evenement->locale('fr')->isFormat('fr')}}
                         </p>
                         <p class="mb-5">
                             <strong class="text-black d-block">Résumé:</strong>
